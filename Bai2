@@ -1,0 +1,85 @@
+
+#include <iostream>
+using namespace std;
+
+
+int main()
+{
+	int N, M;
+	int arr[100][100];
+	int soLonNhat;
+
+	cin >> N >> M;
+	for (int y = 0; y < N; y++)
+	{
+		for (int x = 0; x < M; x++)
+		{
+			cin >> arr[x][y];
+		}
+	}
+	soLonNhat = arr[0][0];
+	for (int y = 0; y < N; y++)
+	{
+		for (int x = 0; x < M; x++)
+		{
+			cout << arr[x][y] << " ";
+			if (arr[x][y] > soLonNhat)
+				soLonNhat = arr[x][y];
+		}
+		cout << endl;
+	}
+
+	cout << endl;
+	cout << "So lon nhat: " << soLonNhat << endl;
+	cout << "Vi tri xuat hien: ";
+
+	for (int y = 0; y < N; y++)
+	{
+		for (int x = 0; x < M; x++)
+		{
+			if (arr[x][y] == soLonNhat)
+			{
+				cout << "(" << x << ", " << y << ") ";
+			}
+		}	
+	}
+	cout << endl;
+	// lam voi truong hop khong can sao luu ma tran
+	int k;
+	cout << "Nhap so K: ";
+	cin >> k;
+	for (int i = 0; i < M; i++)
+	{
+		for (int j = 0; j < M - i - 1; j++)
+		{
+			if (arr[j][k] > arr[j + 1][k])
+			{
+				int temp = arr[j + 1][k];
+				arr[j + 1][k] = arr[j][k];
+				arr[j][k] = temp;
+			}
+		}
+	}
+	cout << "Mang sau khi sap xep" << endl;
+	for (int y = 0; y < N; y++)
+	{
+		for (int x = 0; x < M; x++)
+		{
+			cout << arr[x][y] << " ";
+		}
+		cout << endl;
+	}
+	cout << "Dao ma tran" << endl;
+	for (int x = 0; x < M; x++)
+	{
+		for (int y = 0; y < N; y++)
+		{
+			cout << arr[x][y] << " ";
+		}
+		cout << endl;
+	}
+	
+	
+
+
+}
